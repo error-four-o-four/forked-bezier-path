@@ -18,7 +18,7 @@ export default [
 		input,
 		output: {
 			file: output.iife,
-			name: 'BeziePath',
+			name: 'BezierPath',
 			format: 'iife',
 			plugins
 		}
