@@ -1,26 +1,41 @@
 import terser from '@rollup/plugin-terser';
-import ts from 'rollup-plugin-typescript';
+import dts from 'rollup-plugin-dts'
 
-export default {
-	input: 'src/index.ts',
-	output: [
-		{
-			file: `build/bezier-path.esm.js`,
-			format: 'esm'
-		},
-		// {
-		// 	file: `build/bezier-path.cjs`,
-		// 	format: 'cjs',
-		// 	plugins: [terser()]
-		// },
-		{
-			file: `build/bezier-path.min.js`,
+import pkg from './package.json' with { type: 'json' };
+import tsc from './tsconfig.json' with { type: 'json' };
+
+const input = `${tsc.compilerOptions.outDir}/index.js`
+const output = {
+	iife: pkg.exports['.'].browser, 
+	esm: pkg.exports['.'].import,
+	cjs: pkg.exports['.'].require,
+}
+
+const plugins = [terser()]
+
+export default [
+	{
+		input,
+		output: {
+			file: output.iife,
 			name: 'BeziePath',
 			format: 'iife',
-			plugins: [terser()]
+			plugins
 		}
-	],
-	plugins: [
-		ts(),
-	]
-}
+	},
+	{
+		input,
+		output: [
+			{ file: output.esm.default, format: 'esm' },
+			{ file: output.cjs.default, format: 'cjs', plugins },
+		]
+	},
+	{
+		input: input.replace(/\.js$/, '.d.ts'),
+		output: [
+			{ file: output.esm.types, format: 'esm' },
+			{ file: output.cjs.types, format: 'cjs' },
+		],
+		plugins: [dts()]
+	}
+]

@@ -14,28 +14,39 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./build/bezier-path.d.ts",
-      "import": "./build/bezier-path.esm.js"
+      "browser": "./build/bezier-path.min.js",
+      "import": {
+        "types": "./build/index.d.ts",
+        "default": "./build/index.js"
+      },
+      "require": {
+        "types": "./build/index.d.cts",
+        "default": "./build/index.cjs"
+      }
     }
   },
-  "main": "./build/bezier-path.min.js",
+  "main": "./build/index.cjs",
+  "jsdeliver": "./build/bezier-path.min.js",
+  "unpkg": "./build/bezier-path.min.js",
   "files": [
     "build",
     "package.json"
   ],
   "scripts": {
-    "build": "yarn run clean && yarn run build:pkg && yarn run build:dts",
-    "build:dts": "./node_modules/.bin/dts-bundle-generator -o build/bezier-path.d.ts src/index.ts",
-    "build:pkg": "rollup -c",
+    "prebuild": "yarn run clean",
+    "build": "tsc && rollup -c",
     "clean": "node -e \"fs.rmSync('./build', { recursive: true, force: true })\"",
+    "lint:npm": "npx publint --pack npm",
+    "lint:dts": "npx --yes @arethetypeswrong/cli --pack .",
+    "prepublish": "",
     "publish": "npm publish --access public"
   },
   "dependencies": {},
   "devDependencies": {
     "@rollup/plugin-terser": "^0.4.4",
     "@types/node": "^24.0.4",
-    "dts-bundle-generator": "^9.5.1",
     "rollup": "^4.44.0",
+    "rollup-plugin-dts": "^6.2.1",
     "rollup-plugin-typescript": "^1.0.1",
     "tslib": "^2.8.1",
     "typescript": "^5.8.3"
