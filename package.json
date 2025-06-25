@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "homepage": "https://github.com/davepagurek/bezier-path",
   "bugs": {
-    "url": "https://github.com/davepagurek/glsl-autodiff/issues"
+    "url": "https://github.com/davepagurek/bezier-path/issues"
   },
   "repository": {
     "type": "git",
