@@ -6,7 +6,7 @@ import tsc from './tsconfig.json' with { type: 'json' };
 
 const input = `${tsc.compilerOptions.outDir}/index.js`
 const output = {
-	iife: pkg.exports['.'].browser, 
+	iife: pkg.jsdeliver, 
 	esm: pkg.exports['.'].import,
 	cjs: pkg.exports['.'].require,
 }

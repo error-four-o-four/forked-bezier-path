@@ -14,7 +14,6 @@
   "type": "module",
   "exports": {
     ".": {
-      "browser": "./build/bezier-path.min.js",
       "import": {
         "types": "./build/index.d.ts",
         "default": "./build/index.js"
@@ -47,8 +46,6 @@
     "@types/node": "^24.0.4",
     "rollup": "^4.44.0",
     "rollup-plugin-dts": "^6.2.1",
-    "rollup-plugin-typescript": "^1.0.1",
-    "tslib": "^2.8.1",
     "typescript": "^5.8.3"
   }
 }
