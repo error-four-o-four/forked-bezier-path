@@ -25,7 +25,7 @@
       }
     }
   },
-  "main": "./build/index.cjs",
+  "main": "./build/index.js",
   "jsdeliver": "./build/bezier-path.min.js",
   "unpkg": "./build/bezier-path.min.js",
   "files": [
