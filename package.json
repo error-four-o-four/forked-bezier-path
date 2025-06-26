@@ -21,10 +21,11 @@
       "require": {
         "types": "./build/index.d.cts",
         "default": "./build/index.cjs"
-      }
+      },
+      "browser": "./build/bezier-path.min.js"
     }
   },
-  "main": "./build/index.js",
+  "main": "./build/index.cjs",
   "jsdeliver": "./build/bezier-path.min.js",
   "unpkg": "./build/bezier-path.min.js",
   "files": [
@@ -37,7 +38,6 @@
     "clean": "node -e \"fs.rmSync('./build', { recursive: true, force: true })\"",
     "lint:npm": "npx publint --pack npm",
     "lint:dts": "npx --yes @arethetypeswrong/cli --pack .",
-    "prepublish": "",
     "publish": "npm publish --access public"
   },
   "dependencies": {},
