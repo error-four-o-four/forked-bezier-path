@@ -1,0 +1,51 @@
+{
+  "name": "@davepagurek/bezier-path",
+  "version": "0.0.2",
+  "homepage": "https://github.com/davepagurek/bezier-path",
+  "bugs": {
+    "url": "https://github.com/davepagurek/bezier-path/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davepagurek/bezier-path.git"
+  },
+  "license": "MIT",
+  "author": "Dave Pagurek <dave@davepagurek.com>",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./build/index.d.ts",
+        "default": "./build/index.js"
+      },
+      "require": {
+        "types": "./build/index.d.cts",
+        "default": "./build/index.cjs"
+      },
+      "browser": "./build/bezier-path.min.js"
+    }
+  },
+  "main": "./build/index.cjs",
+  "jsdeliver": "./build/bezier-path.min.js",
+  "unpkg": "./build/bezier-path.min.js",
+  "files": [
+    "build",
+    "package.json"
+  ],
+  "scripts": {
+    "prebuild": "yarn run clean",
+    "build": "tsc && rollup -c",
+    "clean": "node -e \"fs.rmSync('./build', { recursive: true, force: true })\"",
+    "lint:npm": "npx publint --pack npm",
+    "lint:dts": "npx --yes @arethetypeswrong/cli --pack .",
+    "publish": "npm publish --access public"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.4",
+    "@types/node": "^24.0.4",
+    "rollup": "^4.44.0",
+    "rollup-plugin-dts": "^6.2.1",
+    "typescript": "^5.8.3"
+  }
+}
