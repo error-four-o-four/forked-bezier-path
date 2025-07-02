@@ -23,6 +23,8 @@ Or on OpenProcessing, add the CDN link as a library:
 ```
 https://cdn.jsdelivr.net/npm/@davepagurek/bezier-path@0.0.3
 ```
+> [!IMPORTANT]  
+> This package is ESM-only. It cannot be require()'d from CommonJS. [Read More](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c)
 
 ### Creating paths
 
