@@ -8,7 +8,6 @@ const input = `${tsc.compilerOptions.outDir}/index.js`
 const output = {
   iife: pkg.jsdeliver, 
   esm: pkg.exports['.'].import,
-  cjs: pkg.exports['.'].require,
 }
 
 const plugins = [terser()]
@@ -25,17 +24,11 @@ export default [
   },
   {
     input,
-    output: [
-      { file: output.esm.default, format: 'esm' },
-      { file: output.cjs.default, format: 'cjs', plugins },
-    ]
+    output: { file: output.esm.default, format: 'esm' },
   },
   {
     input: input.replace(/\.js$/, '.d.ts'),
-    output: [
-      { file: output.esm.types, format: 'esm' },
-      { file: output.cjs.types, format: 'cjs' },
-    ],
+    output: { file: output.esm.types, format: 'esm' },
     plugins: [dts()]
   }
 ]

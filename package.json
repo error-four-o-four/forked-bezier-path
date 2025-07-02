@@ -18,14 +18,10 @@
         "types": "./build/index.d.ts",
         "default": "./build/index.js"
       },
-      "require": {
-        "types": "./build/index.d.cts",
-        "default": "./build/index.cjs"
-      },
       "browser": "./build/bezier-path.min.js"
     }
   },
-  "main": "./build/index.cjs",
+  "main": "./build/index.js",
   "jsdeliver": "./build/bezier-path.min.js",
   "unpkg": "./build/bezier-path.min.js",
   "files": [
