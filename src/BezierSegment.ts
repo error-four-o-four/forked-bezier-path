@@ -1,5 +1,5 @@
-import type { Point } from "./types"
 import { times } from "./utils"
+import type { Point } from "./types"
 
 export class BezierSegment {
   public A: Point

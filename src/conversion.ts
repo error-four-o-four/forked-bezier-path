@@ -1,6 +1,6 @@
-import { BezierPath, DrawingCommand } from ".";
+import { BezierPath } from "./BezierPath";
 import { BezierSegment } from "./BezierSegment";
-import { BezierControlPoint } from "./types";
+import type { BezierControlPoint, DrawingCommand } from "./types";
 
 // https://stackoverflow.com/questions/64945219/split-a-svg-path-d-to-array-of-objects
 const PATH_COMMANDS = {

@@ -1,6 +1,6 @@
 import { BezierSegment } from "./BezierSegment"
-import { Point } from "./types"
 import { times } from "./utils"
+import type { Point } from "./types"
 
 export class BezierPath {
   public segments: BezierSegment[]
