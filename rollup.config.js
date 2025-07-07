@@ -1,3 +1,4 @@
+// @ts-check
 import terser from '@rollup/plugin-terser';
 import dts from 'rollup-plugin-dts'
 
@@ -6,7 +7,7 @@ import tsc from './tsconfig.json' with { type: 'json' };
 
 const input = `${tsc.compilerOptions.outDir}/index.js`
 const output = {
-  iife: pkg.jsdeliver, 
+  iife: pkg.jsdelivr, 
   esm: pkg.exports['.'].import,
 }
 
