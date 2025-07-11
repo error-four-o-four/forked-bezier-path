@@ -32,6 +32,7 @@ export default tseslint.config(
     files: ['**/*.ts'],
     rules: {
       'no-unused-vars': 'off',
+      '@stylistic/linebreak-style': ['warn', 'unix'],
       '@stylistic/max-len': ['warn', { code: 80, ignoreComments: true }],
       '@typescript-eslint/ban-ts-comment': 'off',
       '@typescript-eslint/ban-ts-ignore': 'off',
