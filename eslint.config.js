@@ -1,15 +1,25 @@
 // @ts-check
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath } from 'node:url'
 
-import prettierConfig from 'eslint-config-prettier'
-import tseslint from 'typescript-eslint';
-import globals from 'globals';
+import globals from 'globals'
+import tseslint from 'typescript-eslint'
+import stylistic from '@stylistic/eslint-plugin'
 
-import { includeIgnoreFile } from '@eslint/compat';
+import { includeIgnoreFile } from '@eslint/compat'
 
 export default tseslint.config(
   includeIgnoreFile(fileURLToPath(new URL('.gitignore', import.meta.url))),
   tseslint.configs.recommended,
+  stylistic.configs.customize({
+    severity: 'warn',
+    arrowParens: true,
+    commaDangle: 'always-multiline',
+    blockSpacing: true,
+    braceStyle: '1tbs',
+    indent: 2,
+    quotes: 'single',
+    semi: false,
+  }),
   {
     languageOptions: {
       parserOptions: {
@@ -21,6 +31,8 @@ export default tseslint.config(
   {
     files: ['**/*.ts'],
     rules: {
+      'no-unused-vars': 'off',
+      '@stylistic/max-len': ['warn', { code: 80, ignoreComments: true }],
       '@typescript-eslint/ban-ts-comment': 'off',
       '@typescript-eslint/ban-ts-ignore': 'off',
       '@typescript-eslint/camelcase': 'off',
@@ -33,16 +45,14 @@ export default tseslint.config(
       '@typescript-eslint/no-inferrable-types': 'off',
       '@typescript-eslint/no-non-null-assertion': 'off',
       '@typescript-eslint/no-unused-vars': [1, { argsIgnorePattern: '^_' }],
-      'no-unused-vars': 'off',
     },
   },
   {
-    files: [ '**/*.config.js' ],
+    files: ['**/*.config.js'],
     languageOptions: {
       globals: {
         ...globals.node,
       },
     },
   },
-  prettierConfig
-);
+)
