@@ -5,8 +5,8 @@ import dts from 'rollup-plugin-dts'
 import pkg from './package.json' with { type: 'json' }
 import tsc from './tsconfig.json' with { type: 'json' }
 
-const input = `${tsc.compilerOptions.outDir}/index.js`
-const output = {
+export const input = `${tsc.compilerOptions.outDir}/index.js`
+export const output = {
   iife: pkg.exports['.'].browser,
   esm: pkg.exports['.'].import,
 }

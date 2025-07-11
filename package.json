@@ -29,9 +29,8 @@
     "package.json"
   ],
   "scripts": {
-    "prebuild": "yarn run clean",
-    "build": "tsc -p tsconfig.build.json && rollup -c",
-    "clean": "node -e \"fs.rmSync('./build', { recursive: true, force: true })\" && node -e \"fs.rmSync('./.build', { recursive: true, force: true })\"",
+    "build": "yarn run clean && tsc -p tsconfig.build.json && rollup -c",
+    "clean": "node clean.config.js",
     "lint": "eslint .",
     "lint:fix": "yarn run lint -- --fix",
     "lint:tsc": "tsc --noEmit",
